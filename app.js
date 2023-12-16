@@ -12,6 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => {
+  return res.status(200).json({ status: "Active" });
+});
+
 app.post("/generate-ticket", async (req, res) => {
   try {
     const { experienceName, date, numberOfPersons, customerName } = req.body;
